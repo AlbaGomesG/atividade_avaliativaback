@@ -33,4 +33,9 @@ const updateMovie = async (id, titulo, genero) => {
     return result.rows[0];
 };
 
-module.exports = { getMovies, getMovieById, createMovie, updateMovie };
+const deleteMovie = async (id) => {
+    const result = await pool.query("DELETE FROM movies WHERE id = $1 RETURNING *", [id]);
+    return result.rows[0];
+};
+
+module.exports = { getMovies, getMovieById, createMovie, updateMovie, deleteMovie };
