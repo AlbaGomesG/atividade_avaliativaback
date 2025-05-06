@@ -22,8 +22,8 @@ INSERT INTO directors (nome) VALUES
 ('Rob Minkoff');
 
 INSERT INTO movies (titulo, genero, anoLancamento, avaliacao, director_id) VALUES
-('Harry Potter e o Prisioneiro de Azkaban', 'Infantil/Fantasia', 2004, 5.0, 1),
-('Mulher-Maravilha', 'Ação/Fantasia', 2017, 4.2, 2),
-('Rei Leão', 'Infantil/Aventura', 2019, 4.2, 3),
-('Harry Potter e a Pedra Filosofal', 'Infantil/Fantasia', 2001, 4.9, 1),
-('Mulher-Maravilha 1984', 'Ação/Fantasia', 2020, 3.0, 2);
+('Harry Potter e o Prisioneiro de Azkaban', 'Fantasia', 2004, 5.0, 1),
+('Mulher-Maravilha', 'Ação', 2017, 4.2, 2),
+('Rei Leão', 'Infantil', 2019, 4.2, 3),
+('Harry Potter e a Pedra Filosofal', 'Infantil', 2001, 4.9, 1),
+('Mulher-Maravilha 1984', 'Ação', 2020, 3.0, 2);
