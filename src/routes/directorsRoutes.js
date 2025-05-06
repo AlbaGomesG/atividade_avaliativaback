@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const directorsController = require("../controllers/directorsController.js");
-const apiKeyMiddleware = require("../config/apiKey.js");
-
-router.use(apiKeyMiddleware);
-
 
 /**
  * @swagger
@@ -51,21 +47,22 @@ router.get("/:id", directorsController.getDirector);
  * @swagger
  * /api/directors:
  *   post:
- *     summary: Cria um novo diretor
+ *     summary: Cria uma novo diretor
  *     tags: [Directors]
  *     requestBody:
  *       required: true
  *       content:
- *         multipart/form-data:
+ *         application/json:
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               nome:
  *                 type: string
  *     responses:
  *       201:
- *         description: Bruxo criado
+ *         description: Casa criada
  */
+
 
 router.post("/", directorsController.createDirector);
 
@@ -77,7 +74,7 @@ router.post("/", directorsController.createDirector);
  *     tags: [Directors]
  *     parameters:
  *       - in: path
- *         name: id
+ *         nome: id
  *         required: true
  *         schema:
  *           type: integer
@@ -88,12 +85,13 @@ router.post("/", directorsController.createDirector);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               nome:
  *                 type: string
  *     responses:
  *       200:
  *         description: Diretor atualizado
  */
+
 
 router.put("/:id", directorsController.updateDirector);
 
