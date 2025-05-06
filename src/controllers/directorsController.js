@@ -22,4 +22,17 @@ const getDirector = async (req, res) => {
     }
 };
 
-module.exports = {getAllDirectors, getDirector};
+const createDirector = async (req, res) => {
+    try {
+        const { nome } = req.body;
+        const newDirector = await directorsModel.createDirector(nome);
+        res.status(201).json(newDirector);
+    } catch (error) {
+        if (error.code === "23505") {
+            return res.status(400).json({ message: "Esse diretor já existe!" });
+        }
+        res.status(500).json({ message: "Erro ao criar diretor!"});
+    }
+};
+
+module.exports = {getAllDirectors, getDirector, createDirector};

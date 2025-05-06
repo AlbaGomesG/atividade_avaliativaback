@@ -4,5 +4,6 @@ const directorsController = require("../controllers/directorsController.js");
 
 router.get("/", directorsController.getAllDirectors);
 router.get("/:id", directorsController.getDirector);
+router.post("/", directorsController.createDirector);
 
 module.exports = router;

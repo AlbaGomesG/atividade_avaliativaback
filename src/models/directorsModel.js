@@ -10,4 +10,9 @@ const getDirectorById = async (id) => {
     return result.rows[0];
 };
 
-module.exports = {getDirectors, getDirectorById};
+const createDirector = async (nome) => {
+    const result = await pool.query("INSERT INTO directors (nome) VALUES ($1) RETURNING *", [nome]);
+    return result.rows[0];
+};
+
+module.exports = {getDirectors, getDirectorById, createDirector};
