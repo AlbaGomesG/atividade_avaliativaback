@@ -25,7 +25,8 @@ const getMovie = async (req, res) => {
 const createMovie = async (req, res) => {
     try {
         const { titulo, genero, anoLancamento, avaliacao, director_id } = req.body;
-        const newMovie = await moviesModel.createMovie(titulo, genero, anoLancamento, avaliacao, director_id);
+        const photo = req.file ? req.file.filename : null;
+        const newMovie = await moviesModel.createMovie(titulo, genero, anoLancamento, avaliacao, director_id, photo);
         res.status(201).json(newMovie);
     } catch (error) {
         res.status(500).json({ message: "Erro ao criar o filme, tente novamente!" });

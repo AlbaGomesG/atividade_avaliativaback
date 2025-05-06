@@ -23,8 +23,8 @@ const getMovieById  = async (id) => {
         return result.rows[0];
 };
 
-const createMovie = async (titulo, genero, anoLancamento, avaliacao, director_id) => {
-    const result = await pool.query("INSERT INTO movies (titulo, genero, anoLancamento, avaliacao, director_id) VALUES ($1, $2, $3, $4, $5) RETURNING *", [titulo, genero, anoLancamento, avaliacao, director_id]);
+const createMovie = async (titulo, genero, anoLancamento, avaliacao, director_id, photo) => {
+    const result = await pool.query("INSERT INTO movies (titulo, genero, anoLancamento, avaliacao, director_id, photo) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [titulo, genero, anoLancamento, avaliacao, director_id, photo]);
     return result.rows[0];
 };
 
