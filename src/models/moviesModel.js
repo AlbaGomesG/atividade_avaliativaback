@@ -28,4 +28,9 @@ const createMovie = async (titulo, genero, anoLancamento, avaliacao, director_id
     return result.rows[0];
 };
 
-module.exports = { getMovies, getMovieById, createMovie };
+const updateMovie = async (id, titulo, genero) => {
+    const result = await pool.query("UPDATE movies SET titulo = $1, genero = $2 WHERE id = $3 RETURNING *", [titulo, genero, id]);
+    return result.rows[0];
+};
+
+module.exports = { getMovies, getMovieById, createMovie, updateMovie };
