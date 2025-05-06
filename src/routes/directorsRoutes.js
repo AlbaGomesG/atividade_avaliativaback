@@ -6,6 +6,6 @@ router.get("/", directorsController.getAllDirectors);
 router.get("/:id", directorsController.getDirector);
 router.post("/", directorsController.createDirector);
 router.put("/:id", directorsController.updateDirector);
-router.delete("/:id", directorsController.deleteDirector)
+router.delete("/:id", directorsController.deleteDirector);
 
 module.exports = router;

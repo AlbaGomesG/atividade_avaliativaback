@@ -22,4 +22,14 @@ const getMovie = async (req, res) => {
     }
 };
 
-module.exports = {getAllMovies, getMovie};
+const createMovie = async (req, res) => {
+    try {
+        const { titulo, genero, anoLancamento, avaliacao, director_id } = req.body;
+        const newMovie = await moviesModel.createMovie(titulo, genero, anoLancamento, avaliacao, director_id);
+        res.status(201).json(newMovie);
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao criar o filme, tente novamente!" });
+    }
+};
+
+module.exports = {getAllMovies, getMovie, createMovie};

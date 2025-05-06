@@ -23,4 +23,9 @@ const getMovieById  = async (id) => {
         return result.rows[0];
 };
 
-module.exports = { getMovies, getMovieById };
+const createMovie = async (titulo, genero, anoLancamento, avaliacao, director_id) => {
+    const result = await pool.query("INSERT INTO movies (titulo, genero, anoLancamento, avaliacao, director_id) VALUES ($1, $2, $3, $4, $5) RETURNING *", [titulo, genero, anoLancamento, avaliacao, director_id]);
+    return result.rows[0];
+};
+
+module.exports = { getMovies, getMovieById, createMovie };
