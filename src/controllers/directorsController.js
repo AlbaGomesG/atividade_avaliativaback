@@ -35,4 +35,17 @@ const createDirector = async (req, res) => {
     }
 };
 
-module.exports = {getAllDirectors, getDirector, createDirector};
+const updateDirector = async (req, res) => {
+    try {
+        const { nome } = req.body;
+        const updateDirector = await directorsModel.updateDirector(req.params.id, nome);
+        if (!updateDirector) {
+            return res.status(404).json({ message: "Diretor não foi encontrado!"});
+        }
+        res.status(200).json({ message: "Diretor atualizado com sucesso!", updateDirector });
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao atualizar diretor!"});
+    }
+};
+
+module.exports = {getAllDirectors, getDirector, createDirector, updateDirector};

@@ -15,4 +15,9 @@ const createDirector = async (nome) => {
     return result.rows[0];
 };
 
-module.exports = {getDirectors, getDirectorById, createDirector};
+const updateDirector = async (id, nome) => {
+    const result = await pool.query("UPDATE directors SET nome = $1 WHERE id = $2 RETURNING *", [nome, id]);
+    return result.rows[0];
+}
+
+module.exports = {getDirectors, getDirectorById, createDirector, updateDirector};
