@@ -18,6 +18,14 @@ const createDirector = async (nome) => {
 const updateDirector = async (id, nome) => {
     const result = await pool.query("UPDATE directors SET nome = $1 WHERE id = $2 RETURNING *", [nome, id]);
     return result.rows[0];
-}
+};
 
-module.exports = {getDirectors, getDirectorById, createDirector, updateDirector};
+const deleteDirector = async (id) => {
+    const result = await pool.query("DELETE FROM directors WHERE id = $1 RETURNING *", [id]);
+    if (result.rowCount === 0) {
+        return {error: "Diretor não encontrado!"};
+    }
+    return { message: "Diretor deletado com sucesso!" };
+};
+
+module.exports = {getDirectors, getDirectorById, createDirector, updateDirector, deleteDirector};

@@ -48,4 +48,13 @@ const updateDirector = async (req, res) => {
     }
 };
 
-module.exports = {getAllDirectors, getDirector, createDirector, updateDirector};
+const deleteDirector = async (req, res) => {
+    try {
+        const message = await directorsModel.deleteDirector(req.params.id);
+        res.json(message);
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao deletar diretor!"});
+    }
+};
+
+module.exports = {getAllDirectors, getDirector, createDirector, updateDirector ,deleteDirector};
