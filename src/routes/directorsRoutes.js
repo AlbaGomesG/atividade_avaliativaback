@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const directorsController = require("../controllers/directorsController.js");
+const apiKeyMiddleware = require("../config/apiKey.js");
+
+router.use(apiKeyMiddleware);
 
 
 /**

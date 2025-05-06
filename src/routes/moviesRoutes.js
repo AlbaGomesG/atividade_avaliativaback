@@ -3,6 +3,9 @@ const router = express.Router();
 const moviesController = require("../controllers/moviesController.js");
 const upload = require("../config/upload.js");
 
+const apiKeyMiddleware = require("../config/apiKey.js");
+
+router.use(apiKeyMiddleware);
 
 /**
  * @swagger
