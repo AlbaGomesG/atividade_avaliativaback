@@ -10,4 +10,16 @@ const getAllDirectors = async (req, res) => {
     }
 };
 
-module.exports = {getAllDirectors};
+const getDirector = async (req, res) => {
+    try {
+        const director = await directorsModel.getDirectorById(req.params.id);
+        if (!director) {
+            return res.status(404).json({ message: "Diretor não foi encontrado!"});
+        }
+        res.json(director);
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao buscar Diretor!"});
+    }
+};
+
+module.exports = {getAllDirectors, getDirector};
