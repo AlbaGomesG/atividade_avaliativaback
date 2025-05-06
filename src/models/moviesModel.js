@@ -15,4 +15,12 @@ const getMovies = async (genero) => {
     }
 };
 
-module.exports = { getMovies };
+const getMovieById  = async (id) => {
+    const result = await pool.query(`SELECT  movies.*, directors.nome AS director_nome
+        FROM movies
+        LEFT JOIN directors ON movies.director_id = directors.id
+        WHERE movies.id = $1`, [id]);
+        return result.rows[0];
+};
+
+module.exports = { getMovies, getMovieById };

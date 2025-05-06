@@ -10,4 +10,16 @@ const getAllMovies = async (req, res) => {
     }
 };
 
-module.exports = {getAllMovies};
+const getMovie = async (req, res) => {
+    try {
+        const movie = await moviesModel.getMovieById(req.params.id);
+        if (!movie) {
+            return res.status(404).json({ message: "Filme não encontrado!"});
+        }
+        res.json(movie);
+    } catch (error) {
+        res.status(500).json({ message: "Erro ao buscar o filme!"});
+    }
+};
+
+module.exports = {getAllMovies, getMovie};
